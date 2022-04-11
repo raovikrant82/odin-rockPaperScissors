@@ -49,24 +49,11 @@ function playRound(playerSelection, computerSelection) {
   return resultStr;
 }
 
-function final(userScore, computerScore) {
-  let finalResult = "";
-  if (userScore > computerScore) {
-    finalResult = "You Won!";
-  } else if (userScore < computerScore) {
-    finalResult = "You Lost!";
-  } else {
-    finalResult = "Tie!";
-  }
-  console.log(finalResult);
-}
-
 function game() {
   for (let i = 0; i < 5; i++) {
     console.log(playRound(userPlay(), computerPlay()));
     let scoreDisplay = `${userScore} : ${computerScore}`;
     console.log(scoreDisplay);
   }
-  final();
 }
 console.log(game());
