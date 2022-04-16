@@ -48,12 +48,3 @@ function playRound(playerSelection, computerSelection) {
   }
   return resultStr;
 }
-
-function game() {
-  for (let i = 0; i < 5; i++) {
-    console.log(playRound(userPlay(), computerPlay()));
-    let scoreDisplay = `${userScore} : ${computerScore}`;
-    console.log(scoreDisplay);
-  }
-}
-console.log(game());
