@@ -8,6 +8,30 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <main id="main-container" class="container">
+      <h1 id="main-heading">
+        Jump into a fun game of
+        <span id="game-title">Rock | Paper | Scissors</span>
+      </h1>
+      <div id="container-score" class="container">
+        <div id="user-label" class="label">You</div>
+        <div id="computer-label" class="label">Bot</div>
+        <div id="score-board">
+          <span id="user-flash" class="flash">R || P || S</span
+          ><span id="user-score"> 0</span> :
+          <span id="computer-score">0 </span>
+          <span id="computer-flash" class="flash">R || P || S</span>
+        </div>
+      </div>
+      <div class="container" id="result-container">
+        Winner is who gets 5 points first.
+      </div>
+      <div class="btn-container">
+        <button id="rock" class="btn">Rock</button>
+        <button id="paper" class="btn">Paper</button>
+        <button id="scissors" class="btn">Scissors</button>
+      </div>
+    </main>
     <script src="./app.js"></script>
   </body>
 </html>

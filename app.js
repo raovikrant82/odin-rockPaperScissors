@@ -1,50 +1,85 @@
+const choices = document.querySelectorAll(".btn");
+const userFlashDisplay = document.getElementById("user-flash");
+const computerFlashDisplay = document.getElementById("computer-flash");
+const userScoreDisplay = document.getElementById("user-score");
+const computerScoreDisplay = document.getElementById("computer-score");
+const resultDisplay = document.getElementById("result-container");
+
+let computerChoice;
+let userChoice;
+let result;
+
 let userScore = 0;
 let computerScore = 0;
+let leadScore = 0;
 
+function userPlay(items) {
+  items.forEach((item) =>
+    item.addEventListener("click", (e) => {
+      userChoice = e.target.innerText.toUpperCase();
+      userFlashDisplay.innerText = userChoice;
+      computerPlay();
+      playRound(userChoice, computerChoice);
+    })
+  );
+}
 function computerPlay() {
-  let options = ["rock", "paper", "scissors"];
-  let randomNumber = Math.floor(Math.random() * options.length);
-  return options[randomNumber];
+  let randomNumber = Math.floor(Math.random() * choices.length);
+  computerChoice = choices[randomNumber];
+  computerChoice = computerChoice.innerText.toUpperCase();
+  computerFlashDisplay.innerText = computerChoice;
 }
 
-function userPlay() {
-  let userSelection = prompt("Type (Rock, Paper or Scissors): ");
-  userSelection = userSelection.toLowerCase();
-  return userSelection;
-}
-
-function playRound(playerSelection, computerSelection) {
-  let resultStr = "";
-  if (playerSelection === "rock") {
-    if (computerSelection === "scissors") {
-      resultStr = "You Win! Rock beats scissors.";
+function playRound(user, computer) {
+  if (user === computer) {
+    result = "It's a tie!";
+  } else if (user === "ROCK") {
+    if (computer === "SCISSORS") {
       userScore++;
-    } else if (computerSelection === "paper") {
-      resultStr = "You LOSE! Paper beats Rock.";
-      computerScore++;
+      result = "You Won! Rock beats Scissors.";
     } else {
-      resultStr = "It's a tie.";
+      computerScore++;
+      result = "You Lost! Scissors beat Rock.";
     }
-  } else if (playerSelection === "paper") {
-    if (computerSelection === "rock") {
-      resultStr = "You Win! Paper beats Rock.";
+  } else if (user === "SCISSORS") {
+    if (computer === "PAPER") {
       userScore++;
-    } else if (computerSelection === "scissors") {
-      resultStr = "You LOSE! Scissors beats paper.";
-      computerScore++;
+      result = "You Won! Scissors beat Paper.";
     } else {
-      resultStr = "It's a tie.";
+      computerScore++;
+      result = "You Lost! Paper beats Scissors.";
     }
-  } else {
-    if (computerSelection === "scissors") {
-      resultStr = "You Win! Scissors beats Paper.";
+  } else if (user === "PAPER") {
+    if (computer === "ROCK") {
       userScore++;
-    } else if (computerSelection === "rock") {
-      resultStr = "You LOSE! Rock beats Scissors.";
-      computerScore++;
+      result = "You Won! Paper beats Rock.";
     } else {
-      resultStr = "It's a tie.";
+      computerScore++;
+      result = "You Lost! Rock beats Paper.";
     }
   }
-  return resultStr;
+  if (userScore > computerScore) {
+    leadScore = userScore;
+  } else {
+    leadScore = computerScore;
+  }
+
+  resultDisplay.innerText = result;
+  userScoreDisplay.innerText = userScore;
+  computerScoreDisplay.innerText = computerScore;
 }
+
+userPlay(choices);
+// function startGame() {
+//   if (leadScore === 5) {
+//     if (leadScore === userScore) {
+//       result = `You have defeated a bot - WINNER.`;
+//     } else {
+//       result = `Bot has defeated you - LOOSER.`;
+//     }
+//   } else {
+//     userPlay(choices);
+//   }
+// }
+
+// startGame();
