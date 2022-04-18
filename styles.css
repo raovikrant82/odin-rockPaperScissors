@@ -38,10 +38,6 @@ body {
   position: relative;
 }
 
-/* #score-board {
-  display: none;
-} */
-
 .label {
   position: absolute;
   top: -30px;
@@ -71,13 +67,30 @@ body {
   margin: 0 auto;
 }
 
+#score-content {
+  height: 100%;
+}
+
 #score-board {
   text-align: center;
-  font-size: 8rem;
+  font-size: 9rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+#start-game {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#welcome-para {
+  padding: 25px;
+}
+
 #result-container {
   text-align: center;
 }
